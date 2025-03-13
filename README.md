@@ -53,9 +53,6 @@ The game data directory is assumed to be "The Witcher" in the user documents fol
 
 The Java runtime will sometimes throws a null pointer exception when adding the shell folders to the file chooser dialog (JFileChooser).  If this happens, you can disable the shell folders by specifying -DUseShellFolder=0 on the java command line.
 
-ScripterRon - Ronald.Hoffman6@gmail.com
-
-
 =========================================================================
 =========================================================================
 
