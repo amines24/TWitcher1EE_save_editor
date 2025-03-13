@@ -1,114 +1,84 @@
 # witcher1_save_editor
 Tool to modify the witcher 1 (enhanced edition) save files (modified functional version). You will be able to modify your items, your mutagens and the characteristics of your character.
 
-----------------------
 TWEditor - Version 2.2
-----------------------
 
+Fichier original : Ronald Hoffman
+Présentation
 
-Overview
-----------------------------------
+TWEditor vous permet de modifier les fichiers de sauvegarde créés par The Witcher. Vous pouvez ajuster les attributs et les compétences du personnage principal, Geralt. Vous avez également la possibilité de décompresser tous les fichiers de la sauvegarde, de modifier manuellement un ou plusieurs fichiers, puis de recompresser la sauvegarde. Il est important de noter qu'il n'est pas possible d'ajouter ou de supprimer des fichiers dans la sauvegarde.
 
-TWEditor allows you to modify save games created by The Witcher.  You can modify the attributes and abilities of the player character (Geralt). You can also unpack all of the files in the save, manually modify one or more of the files, and then repack the save.  Note that you can not add files to the save or delete files from the save.
+L'onglet 'Stats' vous permet de modifier certains champs de la sauvegarde, tels que l'expérience, les orens et les talents. Les valeurs modifiées seront enregistrées lors de l'enregistrement du fichier. L'acceptation de ces changements lors du chargement de la sauvegarde dépend du moteur du jeu.
 
-The 'Stats' tab allows you to modify selected fields in the save game such as experience, orens and talents.  The modified values will be written when the file is saved.  Whether or not the changes are accepted when the save is loaded depends on the game engine.
+L'onglet 'Attributes' permet de modifier les sélections de Force, Dextérité, Endurance et Intelligence.
 
-The 'Attributes' tab allows you to modify Strength, Dexterity, Stamina and Intelligence selections.
+L'onglet 'Signs' permet de modifier les sélections de Aard, Igni, Quen, Axii et Yrden.
 
-The 'Signs' tab allows you to modify Aard, Igni, Quen, Axii and Yrden selections.
+L'onglet 'Styles' permet de modifier les sélections pour l'épée en acier et l'épée en argent.
 
-The 'Styles' tab allows you to modify Steel Sword and Silver Sword selections.
+L'onglet 'Equipment' vous permet de modifier les objets équipés par Geralt ainsi que ses trophées.
 
-The 'Equipment' tab allows you to modify Geralt's equipped items and trophy.
+L'onglet 'Inventory' permet de modifier l'inventaire de Geralt.
 
-The 'Inventory' tab allows you to modify Geralt's inventory.
-
-The 'Quests' tab shows the game quests (Started, Completed, Failed and Not Started).  The 'Examine' button will display a description of the current quest stage (if the stage has a description).
-
-
+L'onglet 'Quests' affiche les quêtes du jeu (en cours, terminées, échouées et non commencées). Le bouton 'Examine' permet d'afficher la description de l'étape actuelle de la quête (si une description est disponible pour cette étape).
 Installation
-----------------------------------
 
-This version of the save game editor assumes you have installed the Enhanced Edition of The Witcher.  Using this version of the editor with the original version of The Witcher can result in inventory errors.
+Cette version de l'éditeur de sauvegarde nécessite l'édition améliorée de The Witcher. L'utilisation de cette version de l'éditeur avec la version originale de The Witcher pourrait entraîner des erreurs d'inventaire.
 
-To install this utility, place the TWEditor.jar file into a directory of your choice.  To run the utility, create a program shortcut and specify 
+Pour installer cet utilitaire, placez le fichier TWEditor.jar dans un répertoire de votre choix. Pour exécuter l'utilitaire, créez un raccourci et spécifiez la commande suivante :
 
-  javaw -Xmx256m -jar TWEditor.jar
+javaw -Xmx256m -jar TWEditor.jar
 
-as the program to run.  Set the Start Directory to the directory where you extracted the jar file.  A sample program shortcut is included.  The -Xmx256m argument specifies the maximum heap size in megabytes (the example specifies a heap of 256Mb).  You can increase the size if you run out of space processing very large saves.  Note that Windows will start swapping if the Java heap size exceeds the amount of available storage and this will significantly impact performance.  The java virtual machine will fail to start if the requested heap size is too large.
+Comme programme à exécuter. Définissez le répertoire de démarrage sur le répertoire où vous avez extrait le fichier jar. Un raccourci de programme est fourni à titre d'exemple. L'argument -Xmx256m spécifie la taille maximale du tas en mégaoctets (dans cet exemple, 256 Mo). Vous pouvez augmenter la taille si vous rencontrez des problèmes de mémoire lors du traitement de grandes sauvegardes. Notez que Windows commencera à échanger si la taille du tas Java dépasse l'espace de stockage disponible, ce qui affectera considérablement les performances. La machine virtuelle Java échouera à démarrer si la taille du tas demandée est trop grande.
 
-The Sun Java 1.6 runtime is required.  You can download JRE 1.6 from http://java.com/download/index.jsp.  If you are unsure what version of Java is installed on your system, open a command prompt window and enter "java -version".
+L'exécution de l'éditeur nécessite la version 1.6 de Java (JRE 1.6). Vous pouvez télécharger la version nécessaire depuis Java.com. Si vous n'êtes pas sûr de la version de Java installée sur votre système, ouvrez une fenêtre de commande et tapez "java -version".
 
-The game install directory is located by scanning the Windows registry.  If this scan fails or if the game files are located in a different directory, you can specify the game install directory when starting the editor.  This is done by specifying -DTW.install.path="<path>" on the java command line where <path> is the directory containing dialog.tlk.  For example, if the game files are located in C:\Games\The Witcher and the editor is installed in C:\Games, the shortcut would look like this:
+Le répertoire d'installation du jeu est localisé en scannant le registre Windows. Si cette opération échoue ou si les fichiers du jeu se trouvent dans un autre répertoire, vous pouvez spécifier le répertoire d'installation du jeu lors du lancement de l'éditeur en ajoutant l'option suivante à la ligne de commande Java : -DTW.install.path="<chemin>" où <chemin> est le répertoire contenant dialog.tlk. Par exemple, si les fichiers du jeu sont installés dans C:\Games\The Witcher et l'éditeur dans C:\Games, le raccourci ressemblera à ceci :
 
-  javaw -DTW.install.path="C:\Games\The Witcher" -jar TWEditor.jar
+javaw -DTW.install.path="C:\Games\The Witcher" -jar TWEditor.jar
 
-Don't forget to put double quotes around the path name.
+N'oubliez pas de mettre des guillemets autour du chemin.
 
-The language identifier is determined by scanning the windows registry.  If this scan fails or you want to use a different language, you can specify the language identifier when starting the editor.  This is done by specifying -DTW.language=n on the java command line where 'n' is the language identifier for the associated .tlk file.  For example, US English would be specified as:
+L'identifiant de langue est déterminé par une analyse du registre Windows. Si cette analyse échoue ou si vous souhaitez utiliser une autre langue, vous pouvez spécifier l'identifiant de langue en ajoutant l'option -DTW.language=n où n correspond à l'identifiant de langue pour le fichier .tlk correspondant. Par exemple, pour l'anglais américain, utilisez :
 
-  javaw -DTW.language=3 -jar TWEditor.jar
+javaw -DTW.language=3 -jar TWEditor.jar
 
-The game data directory is assumed to be "The Witcher" in the user documents folder ("My Documents" on an English-language system).  If the save games are located in another directory, you can specify the game data directory when starting the editor.  This is done by specifying -DTW.data.path="<path>" on the java command line where <path> is directory containing the game data.  For example, if the user login is "Ronald Hoffman", the normal game data directory would be "C:\Documents and Settings\Ronald Hoffman\My Documents\The Witcher".
+Le répertoire des données du jeu est supposé être "The Witcher" dans le dossier des documents de l'utilisateur (dossier "Mes Documents" sur un système en anglais). Si les sauvegardes sont situées dans un autre répertoire, vous pouvez spécifier le répertoire de données du jeu en ajoutant l'option suivante à la ligne de commande Java : -DTW.data.path="<chemin>" où <chemin> est le répertoire contenant les données du jeu. Par exemple, si l'utilisateur s'appelle Ronald Hoffman, le répertoire normal des données serait :
 
-The Java runtime will sometimes throws a null pointer exception when adding the shell folders to the file chooser dialog (JFileChooser).  If this happens, you can disable the shell folders by specifying -DUseShellFolder=0 on the java command line.
+C:\Documents and Settings\Ronald Hoffman\My Documents\The Witcher
 
+Il arrive que le runtime Java génère une exception de type "null pointer" lorsqu'il ajoute les dossiers du shell au dialogue du sélecteur de fichiers (JFileChooser). Si cela se produit, vous pouvez désactiver les dossiers du shell en ajoutant l'option -DUseShellFolder=0 à la ligne de commande Java.
 =========================================================================
-=========================================================================
 
+Version 1.0 :
+Lancement initial.
 
-Version 1.0:
-------------
-Initial release.
+Version 1.1 :
+Ajout du support de l'inventaire (ajouter/supprimer/examiner).
 
+Version 1.2 :
+Un flux d'entrée ouvert provoquait l'échec intermittent de la sauvegarde.
+Le mnémonique du signe Axii était "Axi" et non "Axii", ce qui causait des erreurs lors de l'édition du signe Axii.
 
-Version 1.1:
-------------
-Add inventory support (add/remove/examine)
+Version 1.3 :
+Ouverture des sauvegardes créées sur un système russe.
+Ajout de l'onglet 'Quests'.
 
+Version 1.4 :
+Utilisation de la taille de pile maximale lors de l'ajout d'un objet à l'inventaire.
 
-Version 1.2:
-------------
-An open input stream was causing the save to intermittently fail.
+Version 1.5 :
+Correction d'une exception de pointeur nul lors de la modification d'un signe sans signes appris.
 
-The game mnemonic for the Axii sign is 'Axi' and not 'Axii'.  This caused failures when editing the Axii sign.
+Version 2.0 :
+Support de plusieurs langues installées.
+Ajout de la possibilité de recompresser un fichier de sauvegarde.
+Support du système de gestion d'inventaire élargi de l'édition améliorée.
 
+Version 2.1 :
+Support des objets équipés.
 
-Version 1.3:
-------------
-Open saves created on a Russian system.
-
-Add 'Quests' tab.
-
-
-Version 1.4:
-------------
-Use the maximum stack size when adding an item to the inventory.
-
-
-Version 1.5:
-------------
-Fix null pointer exception when modifying a sign and no signs have been learned yet.
-
-
-Version 2.0:
-------------
-Support multiple installed languages.
-
-Add the ability to repack a save file.
-
-Support for the expanded inventory management scheme implemented in the Enhanced Edition.
-
-
-Version 2.1:
-------------
-Support equipped items.
-
-
-Version 2.2:
-------------
-Prompt for the game installation folder if it is not found in the Windows registry or is not valid.
-
-Prompt for the language identifier if it is not found in the windows registry.
-
-Windows 10 full compatibility.
+Version 2.2 :
+Demande du répertoire d'installation du jeu si celui-ci n'est pas trouvé dans le registre Windows ou s'il est invalide.
+Demande de l'identifiant de langue si celui-ci n'est pas trouvé dans le registre Windows.
+Compatibilité complète avec Windows 10.
